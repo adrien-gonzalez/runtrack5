@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyEntrepriseController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+  {% for user in projets %}
+        <a href="{{path ("project_page", {'id': user.id})}}">{{ user.title|e }}</a>
+        <p>{{user.createdAt|date('d:m:Y H:i:s')}}</p>
+        <p>{{ user.content|raw }}</p>
+        <img src="{{ user.image|e }}"><br><br>
+    {% endfor %}
+</div>
+{% endblock %}
